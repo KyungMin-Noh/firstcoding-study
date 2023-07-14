@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        fieldset {
+            border: 0 none;
+        }
+
+        fieldset,
+        input,
+        button {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            border: none;
+        }
+
+        .comment {
+            width: 772px;
+            display: flex;
+            flex-direction: row;
+            position: absolute;
+            margin-top: 209px;
+            margin-left: 90px;
+            justify-content: space-between;
+        }
+
+        #edit {
+            width: 950px;
+            height: 1278px;
+            background: url(images/chat_edit_event.png);
+            margin: 0 auto;
+        }
+
+        #output {
+            width: 712px;
+            margin: 0 112px;
+            height: 40px;
+            background: #333;
+            line-height: 40px;
+            text-align: center;
+            transform: translate(10px, 460px);
+            color: #fff;
+        }
+
+        input {
+            width: 82%;
+            height: 76px;
+            border: 2px solid #383230;
+            border-radius: 4px;
+            text-indent: 30px;
+            font-size: 24px;
+        }
+
+        button {
+            width: 22%;
+            height: 80px;
+            background: #005da4;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="edit">
+        <fieldset class="comment">
+            <input id="input" maxlength="30" value="" type="text" placeholder="메시지를 입력해주세요">
+            <button onclick="changeOutput()">등록하기</button>
+        </fieldset>
+        <div id="output">
+            <span>댓글이 등록되었습니다.</span>
+        </div>
+    </section>
+
+
+    <!-- script -->
+    <script>
+        function changeOutput() {
+            $('#output').html($('#input').val());
+        }
+    </script>
+
+</body>
+
+</html>
