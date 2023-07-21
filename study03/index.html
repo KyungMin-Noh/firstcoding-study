@@ -41,16 +41,31 @@
 
 
             var text = document.querySelector('#comment').value;
+
+            if (text == ''){
+                alert('댓글을 입력해주세요!');
+                return 0;
+            }
+
+                    
             var newComment = `<tr>
                 <td>${num}</td>
                 <td>${userName}</td>
                 <td>${text}</td>
-                <td>${year}-${month}-${date}</td>
+                <td>${year}-${zeroPad(month)}-${date}</td>
                 </tr>`;
 
                 var commentBody = document.querySelector('#commentBody');
                 commentBody.innerHTML = newComment + commentBody.innerHTML;
                 num ++;
+                return 1;
+        }
+        function zeroPad(num){
+            if (num < 10){
+                return '0' + num                
+            }else{
+                return num
+            }
         }
 
         function handleKeydown(){
