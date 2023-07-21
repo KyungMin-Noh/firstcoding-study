@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <title>댓글예제</title>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+
+        fieldset {
+            border: 0 none;
+        }
+
+        th,
+        td,
+        fieldset,
+        input,
+        button {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            border: none;
+        }
+
+        .comment {
+            width: 772px;
+            display: flex;
+            flex-direction: row;
+            padding-top: 210px;
+            justify-content: space-between;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #edit {
+            width: 950px;
+            height: 1278px;
+            background: url(./images/chat_edit_event_01.png);
+            margin: 0 auto;
+        }
+
+        #output {
+            width: 712px;
+            margin: 0 112px;
+            height: 40px;
+            background: #333;
+            line-height: 40px;
+            text-align: center;
+            transform: translate(10px, 460px);
+            color: #fff;
+        }
+
+        input {
+            height: 76px;
+            border: 2px solid #383230;
+            border-radius: 4px;
+            text-indent: 20px;
+            font-size: 20px;
+        }
+
+        button {
+            width: 158px;
+            height: 80px;
+            background: #005da4;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 24px;
+        }
+
+        #author {
+            width: 16%;
+        }
+
+        #comment {
+            width: 452px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 706px;
+            height: 40px;
+            margin: 0 auto;
+            background: #fff;
+            margin-top: 116px;
+            border-top: 1px solid #333;
+        }
+
+        table td {
+            border-bottom: 1px solid #e3e3e3;
+            height: 50px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        thead tr {
+            font-weight: bold;
+            background: #fafafa;
+        }
+
+        tbody td:nth-child(1) {
+            width: 114px;
+        }
+
+        tbody td:nth-child(2) {
+            width: 452px;
+            text-align: left;
+            text-indent: 20px;
+        }
+
+        tbody td:nth-child(3) {
+            width: 140px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="edit">
+        <fieldset class="comment">
+            <input id="author" type="text" placeholder="작성자ID">
+            <input id="comment" type="text" placeholder="메시지를 입력해주세요.">
+            <button onclick="regist();">등록하기</button>
+        </fieldset>
+        <table>
+            <thead>
+                <tr>
+                    <td>작성자ID</td>
+                    <td>내용</td>
+                    <td>등록일</td>
+                </tr>
+            </thead>
+            <tbody id="commentBody">
+                <tr>
+                    <td>Lilly</td>
+                    <td>2023년도 모두 좋은 일만 가득하세요!</td>
+                    <td>2023.01.04</td>
+                </tr>
+                <tr>
+                    <td>haha</td>
+                    <td>행복한 한해 되세요~</td>
+                    <td>2023.01.04</td>
+                </tr>
+                <tr>
+                    <td>코코아</td>
+                    <td>안녕! 반가워~ LH친구플러스^^</td>
+                    <td>2023.01.04</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <!-- script -->
+    <script>
+        function regist() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var date = date.getDate();
+
+            var html = $('#commentBody').html();
+            var author = $('#author').val();
+            var comment = $('#comment').val();
+
+            html = html + `<tr>
+                <td>${author}</td>
+                <td>${comment}</td>
+                <td>${year}.${month}.${date}</td>
+                </tr>`;
+            console.log(html);
+            $('#commentBody').html(html)
+        }
+    </script>
+
+</body>
+
+</html>
