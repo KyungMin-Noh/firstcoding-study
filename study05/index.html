@@ -11,8 +11,17 @@
 
     <style>
         *{
-            font-family: 'NotoSans';
+            font-family: 'NotoSans', sans-serif;
+            margin: 0;
+            padding: 0;
         }
+        ul,li{
+            list-style: none;
+        }
+        input, button{
+            border: 0;
+        }
+
         #content{
             width: 650px;
             margin: 0 auto;
@@ -30,6 +39,7 @@
         #content .header h1{
             margin: 0px;
             font-size: 1.5em;
+            text-indent: 10px;
             /*em : root기준으로 맞추는 경우*/
         }
         #content .body{
@@ -45,20 +55,73 @@
             /*text-wrap:blance;*/
         }
         #content .cal{
-            border: 1px solid #999;
+            border: 1px solid #e1e1e1;
             padding: 20px;
         }
-        #content .cal .form{
-            
+        #content .cal input{
+            border: 1px solid #e1e1e1;
         }
         #content .cal .form .buttons{
-            float: right;
+            float: right;            
+        }
+        #content .cal .form .buttons button{
+            padding: 4px 10px;
+        }
+        #content .cal .form .buttons button:nth-child(1){
+            background-color: #0aaf6b;
+            color: #fff;
+        }
+        #content .cal .form .buttons button:nth-child(2){
+            background-color: #656565;
+            color: #fff;
         }
         #content .cal .form .result{
-            margin-top: 10px;
-
+            margin: 10px 0;
+            font-size: 14px;
+        }        
+        #content .cal .form > ul{
+            list-style: none;
+            height: 40px;
+            text-align: center;
+            padding: 0;
+        }
+        #content .cal .form > ul > li {
+            float: left;
+            height: 40px;
+            color: #fff;
+            line-height: 40px;
+        }
+        #content .cal .form > ul > li.low-weight{
+            width: 25%;
+            background: #329ae3;
+        }
+        #content .cal .form > ul > li.reguler{
+            width: 25%;
+            background: #95c520;
+        }
+        #content .cal .form > ul > li.overweight{
+            width: 20%;
+            background: #ee942a;
+        }
+        #content .cal .form > ul > li.obesity{
+            width: 20%;
+            background: #f15232;
         }
 
+        .notice h3{
+            margin-top: 40px;
+        }
+        .notice ul li{
+            line-height: 30px;
+        }
+        .notice ul li p {
+            padding-top: 10px;
+            font-weight: bold;
+            color: #0aaf6b;
+        }
+        .notice ul li span {
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -97,7 +160,40 @@
                         <span>비만도 결과:</span>
                         <span id="bmiResult"></span>
                     </div>
+
+                    <ul>
+                        <li class="low-weight">저체중</li>
+                        <li class="reguler">정상</li>
+                        <li class="overweight">과체중</li>
+                        <li class="obesity">비만</li>
+                    </ul>
                 </div>
+            </div>
+            
+            <div class="notice">
+                <h3>올바른 식생활 지침</h3>
+                <ul>
+                    <li>
+                        <p>제때에</p>
+                        <span>신체리듬에 맞춰 규칙적으로 식사하는 것은 아주 중요합니다. 특히 아침을 거르지 맙시다.</span>
+                    </li>
+                    <li>
+                        <p>골고루</p>
+                        <span>다양한 식품을 선택해 부족한 영양소가 없도록 해야 합니다.</span>
+                    </li>
+                    <li>
+                        <p>알맞게</p>
+                        <span>표준 체중을 유지하기 위해 하루에 필요한 적정열량을 섭취하는 것은 비만과 성인병을 예방하는 기본 노력입니다.</span>
+                    </li>
+                    <li>
+                        <p>싱겁게</p>
+                        <span>소금의 과잉 섭취는 고혈압을 비롯한 순환기계질환의 중요 요인이 됩니다. 건강을 위해 소금 섭취를 하루에 5g이하로 줄입시다.</span>
+                    </li>
+                    <li>
+                        <p>즐겁게</p>
+                        <span>식사는 가능한 여럿이 함께 하는 것이 좋습니다. 가족끼리 즐겁게 하는 식사는 그 자체가 즐거움이고, 성인병 관리입니다.</span>
+                    </li>
+                </ul> 
             </div>
         </div>
     </div>
@@ -105,22 +201,22 @@
     <script>
         //순수 자바스크립트 방식
         document.querySelector('#btnReset').addEventListener('click', reset)
-        document.querySelector('#btnCalc').addEventListener('click', reset)
+        document.querySelector('#btnCalc').addEventListener('click', calcBmi)
         
         //Jquery 방식
         //$('#btnReset').on ('click', reset)
 
+        //document .getElementById(아이디) 해당 아이디 요소를 선택
         var elHeight = document .getElementById('txtHeight');
         var elWeight = document .getElementById('txtWeight');
 
         function reset(){
-            console.log(reset);
+            // console.log(reset);
             elHeight.value = "";
             elWeight.value = "";
         }
-        function calcbmi(){
-            console.log(elHeight.value);
-            //bmi = 몸무게kg / (키m x 키m)
+        function calcBmi(){
+            // bmi = 몸무게kg / (키m x 키m)
             // var height = elHeight.value / 100;
             var height = Number(elHeight.value) / 100;
             var weight = Number(elWeight.value);
@@ -136,14 +232,17 @@
             var result = "저체중";
             var colorClass = "blue";
 
-            if(bmi>25){
+            if( bmi > 25) {
                 result = '비만';
-            }else if(bmi >23){
+                colorClass = 'red'
+            }else if( bmi > 23) {
                 resutlt = '과체중';
-            }else if(mbi>18.5){
+                colorClass = 'orange'
+            }else if( bmi > 18.5) {
                 result = '정상';
+                colorClass = 'green'
             }else{
-                result ='저체중';
+                result = "저체중";
             }
 
             document.getElementById('bmiResult').innerText = result;
