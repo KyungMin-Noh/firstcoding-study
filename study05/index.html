@@ -29,18 +29,22 @@
         }
         #content .header{
             height: 40px;
-            background-color:#0aaf6b;
+            background-color: #0aaf6b;
             color: #fff;
-            padding: 10px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
         }
         #content .header h1{
             margin: 0px;
             font-size: 1.5em;
-            text-indent: 10px;
             /*em : root기준으로 맞추는 경우*/
+        }
+        #content .header button{
+            width: 32px;
+            height: 32px;
+            background: url(/images/close_btn.png) center no-repeat;
         }
         #content .body{
             padding: 20px;
@@ -70,9 +74,19 @@
         #content .cal .form .buttons button:nth-child(1){
             background-color: #0aaf6b;
             color: #fff;
+            border-radius: 4px;
+        }
+        #content .cal .form .buttons button:nth-child(1):hover{
+            background-color: #0AAFBE;
+            color: #fff;
         }
         #content .cal .form .buttons button:nth-child(2){
             background-color: #656565;
+            color: #fff;
+            border-radius: 4px;
+        }
+        #content .cal .form .buttons button:nth-child(2):hover{
+            background-color: #6565A4;
             color: #fff;
         }
         #content .cal .form .result{
@@ -104,7 +118,7 @@
             background: #ee942a;
         }
         #content .cal .form > ul > li.obesity{
-            width: 20%;
+            width: 30%;
             background: #f15232;
         }
 
@@ -122,12 +136,25 @@
         .notice ul li span {
             font-size: 14px;
         }
+        .red{
+            color: red;
+        }
+        .orange{
+            color: orange;
+        }
+        .green{
+            color: green;
+        }
+        .blue{
+            color: blue;
+        }
     </style>
 </head>
 <body>
     <div id="content">
         <div class="header">
             <h1>나의 체질량지수(BMI)</h1>
+            <button class="close"></button>
         </div>
         <div class="body">
             <div class="description">
@@ -140,11 +167,11 @@
                 <!-- calculater- 줄임말: cal -->
                 <div class="form">
                     <label for="">신장</label>
-                    <input id="txtHeihgt" min="50" max="250" type="number">
+                    <input id="txtHeight" min="50" max="250" type="number">
                     <span>cm</span>
                     <span>/</span>
                     <label for="">체중</label>
-                    <input id="txtWeihgt" min="1" max="500" type="number">
+                    <input id="txtWeight" min="1" max="500" type="number">
                     <span>kg</span>
 
                     <!-- div블럭 span인라인 차이 -->
@@ -230,19 +257,17 @@
             //Math.floor(3.14) 버림
 
             var result = "저체중";
-            var colorClass = "blue";
+            var colorClass = 'blue';
 
             if( bmi > 25) {
-                result = '비만';
+                result = "비만";
                 colorClass = 'red'
             }else if( bmi > 23) {
-                resutlt = '과체중';
+                resutlt = "과체중";
                 colorClass = 'orange'
             }else if( bmi > 18.5) {
-                result = '정상';
+                result = "정상";
                 colorClass = 'green'
-            }else{
-                result = "저체중";
             }
 
             document.getElementById('bmiResult').innerText = result;
