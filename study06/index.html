@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For문</title>
+</head>
+<body>
+    <div class="q">
+        <input type="number" id="num">
+        <button onclick="printstar()">실행</button>
+        <div id="result">
+
+        </div>
+
+        <div class="nav">
+            <div id="menu">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // 자바스크립트 n이 3이면 ***을 만들어줌 
+        function nstar(n){
+            var s = '';            
+            for (var i =1; i<=n; i++){
+                s = s + '*'
+            }
+            return s;
+        }
+
+        function printstar(){
+            var n = document.querySelector('#num').value
+
+            for (var i=1; i<=n; i++){
+                var div = document.createElement('div');
+                var star = "";
+
+                for (var s =1; s<=i; s++){ 
+                    div.innerText = nstar(i);
+                    document.querySelector('result').appendChild(div);    
+                }                           
+            }
+        }
+
+
+        //제이쿼리
+        function nstar(n){
+            var s = '';            
+            for (var i =1; i<=n; i++){
+                s = s + '*'
+            }
+            return s;
+        }
+
+        function nstar(n){
+            $('#result').innerHTML = '';
+            var n = $('#num').val();
+
+            for(var i=1; i<=n; i++){
+                $('#result').append('<div>' + nstar(i) + '</div>');
+            }
+
+        }
+      
+        // star = "";
+        // for(i=1; i<3; i++){
+        //     star = star + '*'
+        // }
+        // console.log(star);
+
+
+
+        //nums[0] = '마이페이지'
+        //nums[1] = '판매대행'
+        //nums.length = 4
+        var menus = ['마이페이지','자금조달', '판매대행', '커뮤니티']
+        
+        for(var i = 0; i<= menus.length; i++){
+            $('#menu').append('<li>' + menus[i] + '</li>');
+        }
+
+
+        //메뉴 데이터
+        var menus = [['마이페이지'],['커뮤니티', '게시판', '블로그'],['자금조달']];  //1번째 부터는 서브메뉴 데이터
+        console.log(menus[0][0]);
+        
+        for(var i = 0; i<= menus.length; i++){
+            //메인메뉴 출력
+            console.log(menus[i][0]);
+
+            //서브메뉴 출력
+            for(var s=1; s<menus[i].length; s++){
+                console.log('' + menus[i][s])
+            }
+
+        }
+
+        for(var i = 0; i<= menus.length; i++){
+            //메인메뉴 출력
+            console.log(menus[i][0]);
+
+            
+            if(menus[i].length >1){
+                //ul태그
+            
+                //서브메뉴 출력
+                for(var s=1; s<menus[i].length; s++){
+                    console.log('' + menus[i][s])
+                }
+            }
+
+        }
+        
+    </script>
+</body>
+</html>
