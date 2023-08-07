@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title>for문 출력</title>
+</head>
+
+<body>
+
+    <ul id="list">
+
+    </ul>
+
+    <ul id="num">
+
+    </ul>
+
+    <ul id="gogo">
+
+    </ul>
+
+
+    <!-- script -->
+    <script>
+        //list
+        var list = document.getElementById('list');
+        var data = ['야채김밥', '참치김밥', '돈까스김밥'];
+
+        for (var i = 0; i < data.length; i++) {
+            // document.createElement('li');   // li생성
+            var li = document.createElement('li');   // li 변수생성
+            li.innerText = data[i];   // li 내용
+            list.appendChild(li);   // li 나열해줘 
+        }
+
+
+        //num
+        var list = document.getElementById('num');
+
+        for (var i = 1; i <= 10; i++) {
+            var li = document.createElement('li');
+            li.innerText = i;
+            list.appendChild(li);
+        }
+
+
+        //gogo
+        var list = document.getElementById('gogo');
+
+        for (var i = 1; i <= 9; i++) {
+            var li = document.createElement('li');
+            li.innerText = 2 * i;
+            list.appendChild(li);
+
+            for (var i = 1; i <= 9; i++) {
+                var li = document.createElement('li');
+                li.innerText = 2 * i;
+                list.appendChild(li);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
