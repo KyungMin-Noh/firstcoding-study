@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <title>for문 출력</title>
+    <style>
+        /* ul,li{list-style: none;} */
+    </style>
 </head>
 
 <body>
@@ -22,6 +25,10 @@
 
     </ul>
 
+
+    <ul id="menuList">
+
+    </ul>
 
     <!-- script -->
     <script>
@@ -50,18 +57,81 @@
         //gogo
         var list = document.getElementById('gogo');
 
-        for (var i = 1; i <= 9; i++) {
+        for (var i = 2; i <= 9; i++) {
             var li = document.createElement('li');
-            li.innerText = 2 * i;
+            li.innerText = `${i}단`;
             list.appendChild(li);
 
-            for (var i = 1; i <= 9; i++) {
-                var li = document.createElement('li');
-                li.innerText = 2 * i;
-                list.appendChild(li);
+            for (var j = 1; j <= 9; j++) {
+                var ul = document.createElement('ul');
+                ul.innerText = `${i} x ${j} =${i * j}` ;
+                list.appendChild(ul);
             }
         }
 
+        
+        // var html = "";
+        // for (var i = 2; i <= 9; i++) {
+        //     html += `<li>${i}단<ul>`;
+
+        //     for (var j = 1; j <= 9; j++) {
+        //         html += `<li>${i} x ${j} = ${i * j}</li>`;
+        //     }
+        //     html += "</ul></li>";
+        // }
+        
+
+
+        //menu
+        var menuList =document.getElementById('menuList');
+        var menu = [
+            ['메인메뉴1', '서브1','서브2'],
+            ['메인메뉴2'],
+            ['메인메뉴3'],
+        ];
+
+
+        // for (var i = 0; i<=menu.length; i++){
+        //     var li = document.createElement('li');
+        //     li.innerHTML = menu[i][0];
+        //     menuList.appendChild(li);
+
+        //     for (var j = 1; j<menu[i].length; j++){
+        //         var ul = document.createElement('ul');
+        //         ul.innerHTML = menu[i][j];
+        //         menuList.appendChild(ul);
+        //     }
+        // }
+
+
+
+        // for (var i = 0; i<=menu.length; i++){
+        //     menu += `<li>${menu[i][0]}<ul>`;
+
+        //     for (var j=0 ; j<=menu[i].length; j++){
+        //         menu += `<li>${menu[i][j]}</li>`;
+        //     }
+        //     menu += "</ul></li>";
+        // }
+
+
+
+        //제이쿼리
+        var menus = [
+            ['메인메뉴1', '서브1','서브2'],
+            ['메인메뉴2'],
+            ['메인메뉴3'],
+        ];
+
+        for (var i = 0; i<=menus.length; i++){
+            $('#menuList').append('<li>' + menus[i][0] + '</li>');
+         
+            for (var j = 1; j<menus[i].length; j++){
+            $('#menuList > li').append('<ul>' +  menus[i][j] +'</ul>');
+            }
+        }
+        
+       
     </script>
 </body>
 
