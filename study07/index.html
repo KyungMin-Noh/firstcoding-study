@@ -34,6 +34,7 @@
     <script>
         //list
         var list = document.getElementById('list');
+        //document.querySelector('list')
         var data = ['야채김밥', '참치김밥', '돈까스김밥'];
 
         for (var i = 0; i < data.length; i++) {
@@ -87,51 +88,88 @@
         var menu = [
             ['메인메뉴1', '서브1','서브2'],
             ['메인메뉴2'],
-            ['메인메뉴3'],
+            ['메인메뉴3', '서브5','서브6'],
         ];
 
+        
+        for (var i = 0; i<=menu.length; i++){
+            var li = document.createElement('li');
+            li.innerHTML = menu[i][0];
+            menuList.appendChild(li);
 
+            var subul = document.createElement('ul');
+            li.appendChild(subul);
+
+            for (var j = 1; j<menu[i].length; j++){
+                var ul = document.createElement('li');
+                ul.innerHTML = menu[i][j];
+                subul.appendChild(ul);
+            }
+        }
+
+
+        // (데이터가 없을 때) HTML 코드를 (문자열로) 만들어서 하는 방식 -추천X
+        // var menuhtml = "";
         // for (var i = 0; i<=menu.length; i++){
-        //     var li = document.createElement('li');
-        //     li.innerHTML = menu[i][0];
-        //     menuList.appendChild(li);
-
-        //     for (var j = 1; j<menu[i].length; j++){
-        //         var ul = document.createElement('ul');
-        //         ul.innerHTML = menu[i][j];
-        //         menuList.appendChild(ul);
-        //     }
-        // }
-
-
-
-        // for (var i = 0; i<=menu.length; i++){
-        //     menu += `<li>${menu[i][0]}<ul>`;
+        //     menuhtml += `<li>${menu[i][0]}<ul>`;
 
         //     for (var j=0 ; j<=menu[i].length; j++){
-        //         menu += `<li>${menu[i][j]}</li>`;
+        //         menuhtml += `<li>${menu[i][j]}</li>`;
         //     }
-        //     menu += "</ul></li>";
+        //     menuhtml += "</ul></li>";
         // }
+
+
+        // //HTML코드 갈아기우기
+        // document.getElementById('menuList').innerTHML =menuhtml;
+
 
 
 
         //제이쿼리
-        var menus = [
-            ['메인메뉴1', '서브1','서브2'],
-            ['메인메뉴2'],
-            ['메인메뉴3'],
-        ];
+        // var menus = [
+        //     ['메인메뉴1', '서브1','서브2'],
+        //     ['메인메뉴2'],
+        //     ['메인메뉴3', '서브5','서브6'],
+        // ];
 
-        for (var i = 0; i<=menus.length; i++){
-            $('#menuList').append('<li>' + menus[i][0] + '</li>');
-         
-            for (var j = 1; j<menus[i].length; j++){
-            $('#menuList > li').append('<ul>' +  menus[i][j] +'</ul>');
-            }
-        }
+        //1번째
+        // for (var i = 0; i<=menus.length; i++){
+        //     //메인메뉴출력
+        //     $('#menuList').append('<li>' + menus[i][0] + '</li>');
+            
+
+        //     //서브메뉴출력
+        //     if(menus[i].length>1){
+        //     $('#menuList > li:last-child').append('<ul></ul>');
+
+        //         for (var j = 1; j<menus[i].length; j++){
+        //             $('#menuList > li:last-child >ul').append('<li>' +  menus[i][j] +'</li>');
+        //         }
+        //     }
+        // }
         
-       
+
+        //2번째
+        // for (var i = 0; i<=menus.length; i++){
+        //     //메인메뉴출력
+        //     $('#menuList').append('<li>' + menus[i][0] + '</li>');
+            
+        //     //서브메뉴가 없으면 생략
+        //     if(menus[i].length ==1){
+        //         continue; //스킵  //break 멈춤.
+        //     }
+
+        //     //서브메뉴출력
+        //     $('#menuList > li:last-child').append('<ul></ul>');
+        //     for (var j = 1; j<menus[i].length; j++){
+        //         $('#menuList > li:last-child >ul').append('<li>' +  menus[i][j] +'</li>');
+        //     }            
+        // }
+            
+
+
+
     </script>
 </body>
 
