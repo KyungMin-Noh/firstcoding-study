@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Event, Array 메소드 </title>
+</head>
+<body>
+    <!-- 오디오 태그 -->
+    <audio id="player" src="come-with-me-133764.mp3" controls></audio>
+
+    <button>실행</button>
+    <button>정지</button>
+
+
+
+    <ul id="names" style="height: 1000px;">
+
+    </ul> 
+
+
+    <script>
+        var player = document.getElementById('player');
+        function playerAudio(){
+            player.play();
+        }
+        function stopAudio(){
+            player.pause();
+        }
+
+        player.addEventListener('play', function(){
+            document.getElementById('playStatus').innerText = '재생'
+        });
+        player.addEventListener('pause', function(){
+            document.getElementById('playStatus').innerText = '정지'
+        });
+        
+        // player.addEventListener('timeupdate', function(s){
+        //     console.log('타임',parseInt())
+        // });
+
+
+        
+
+        document.addEventListener('scroll', function(){
+            console.log(scrollY);
+
+            if (scrollY > 100){
+                document.body.classList.add('gray');
+            } else {
+                document.body.classList.remove('gray');
+            }
+        });
+
+
+        //Array 메소드
+        //arr = [1,2,3,4,5]
+        // arr.push(6)
+        // //arr = [1,2,3,4,5,6]
+        // arr.pop() //마지막꺼를 빼온다.
+        // 6
+        // arr.pop() //마지막꺼를 빼온다.
+        // 5
+        // arr.filter((a)=> a%2 == 1) //홀수를 빼온다. 
+        // [1,3]
+
+
+
+        var names = ['강서준','황정훈','강우진','한현우']
+        //강씨들만 추출
+        var kang = names.filter((n)=> n.startsWith('강'));
+        console.log(kang);
+
+        //강우진 찾아줘.(몇번째)
+        //0번째
+        console.log(names.indexOf('강우진'))
+        //1번째
+        console.log(names.findIndex((n)=> n == '강우진'));
+        //2번째
+        console.log(names.findIndex( function(n){
+            return n == '강우진';
+        }));
+
+        //두번째 값 찾아줘.
+        console.log(names[2]);
+
+        //정렬
+        names.sort();
+        // names.reverse(); //역순으로
+        
+        console.log(names)
+
+
+
+
+        
+    </script>
+</body>
+</html>
